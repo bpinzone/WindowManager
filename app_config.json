@@ -1,0 +1,30 @@
+{
+    "Spotify":{
+        "isApple":false
+    },
+    "Discord":{
+        "isApple":false
+    },
+    "Wunderlist":{
+        "isApple":false
+    },
+    "Messages":{
+        "isApple":true
+    },
+    "Notes":{
+        "isApple":true
+    },
+    "Calendar":{
+        "isApple":true
+    },
+    "Mail":{
+        "isApple":true
+    },
+    "Reminders":{
+        "isApple":true
+    },
+    "iTunes":{
+        "isApple":true,
+        "forbidden_apps": ["iTunesHelper"]
+    }
+}
