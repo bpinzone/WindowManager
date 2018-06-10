@@ -42,6 +42,8 @@ def set_Wunderlist(preset_number):
 	]
 	apple_script_cmd = generate_apple_script(commands)
 	shell(apple_script_cmd)
+	shell(apple_script_cmd)
+
 
 def set_Discord(preset_number):
 	apps_pos_d = get_pos_dict()
@@ -62,6 +64,8 @@ def set_Discord(preset_number):
 	]
 	apple_script_cmd = generate_apple_script(commands)
 	shell(apple_script_cmd)
+	shell(apple_script_cmd)
+
 
 def set_Spotify(preset_number):
 	apps_pos_d = get_pos_dict()
@@ -81,6 +85,8 @@ def set_Spotify(preset_number):
 	]
 	apple_script_cmd = generate_apple_script(commands)
 	shell(apple_script_cmd)
+	shell(apple_script_cmd)
+
 
 
 
