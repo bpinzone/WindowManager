@@ -17,6 +17,7 @@ function grab_windows {
         python ./grab.py $1
 
 }
+
 function grab_windows_e {
         grab_windows $1
         exit
