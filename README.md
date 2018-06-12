@@ -2,8 +2,11 @@
 Save the position and size of your application windows to restore them later. <br />
 
 TODO:<br />
-Change grab->save<br />
-Change set->move<br />
+Refactor grab to save <br />
+Refactor set to move <br />
+Fix this MD file<br />
+Put everything in virtual environment for porability<br />
+Make a function generator for the apple script interaction methods seen so far <br />
 
 One might put the following in their bash_profile<br />
 
