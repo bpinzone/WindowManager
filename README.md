@@ -5,7 +5,7 @@ TODO:<br />
 Refactor grab to save <br />
 Refactor set to move <br />
 Fix this MD file<br />
-Put everything in virtual environment for porability<br />
+Put everything in virtual environment for portability<br />
 Make a function generator for the apple script interaction methods seen so far <br />
 
 One might put the following in their bash_profile<br />
