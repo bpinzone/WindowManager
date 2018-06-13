@@ -7,6 +7,7 @@ Refactor set to move <br />
 Fix this MD file<br />
 Put everything in virtual environment for portability<br />
 Make a function generator for the apple script interaction methods seen so far <br />
+Add functionality to choose an app to bring fullscreen on retina display <br />
 
 One might put the following in their bash_profile<br />
 
