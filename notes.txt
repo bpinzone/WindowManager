@@ -1,0 +1,6 @@
+TODO:
+    Refactor grab to save
+    Refactor set to move
+    Put everything in virtual environment for portability. Put on pip.
+    Make a function generator for the apple script interaction methods seen so far
+    Add functionality to choose an app to bring fullscreen on retina display or center of big display
