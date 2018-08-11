@@ -1,22 +1,18 @@
-# need to check if app is open...
-
-# read the position file and send commands to all applications. 
 import sys
-import json
 from shell import shell
+import json
 from tools import *
-import pdb
+
 
 def main(preset_number):
+
 	app_config_d = {}
 	load_dict_from_file(CONFIG_FILE, app_config_d)
-
 	running_apps = get_running_apps()
 
-	# get each app.
 	for app in app_config_d:
 		if app not in running_apps:
-            		continue
+			continue
 		if app_config_d[app]["isApple"]:
 			set_apple(app, preset_number)
 		else:
@@ -41,6 +37,7 @@ def set_Wunderlist(preset_number):
 		"end tell"
 	]
 	apple_script_cmd = generate_apple_script(commands)
+	# Some non-apple literally need to be told twice...
 	shell(apple_script_cmd)
 	shell(apple_script_cmd)
 
@@ -88,13 +85,10 @@ def set_Spotify(preset_number):
 	shell(apple_script_cmd)
 
 
-
-
-
 def set_apple(app, preset_number):
 
 	apps_pos_d = get_pos_dict()
-	
+
 	app_arg = apps_pos_d["{}_{}".format(app, preset_number)]
 	commands = [
 		"tell application \"{}\"".format(app),
@@ -103,8 +97,6 @@ def set_apple(app, preset_number):
 	]
 	apple_script_cmd = generate_apple_script(commands)
 	shell(apple_script_cmd)
-
-
 
 
 if __name__ == "__main__":

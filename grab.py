@@ -1,21 +1,20 @@
-# Get the window settings and push them into the json file.
+"""
+Get the window settings and push them into the json file.
+"""
+
 import sys
+from shell import shell
 from os import remove
 from os import system
 from os.path import isfile
-
 import json
-from shell import shell
 from tools import *
-import pdb
-
 
 
 def grab_apple(app, preset_number):
 
     # read  file
     apps_pos_d = get_pos_dict()
-
     commands = [
         "tell application \"{}\"".format(app), 
         "get bounds of the front window", 
@@ -34,6 +33,7 @@ def grab_apple(app, preset_number):
     # override position file.
     write_pos_file(apps_pos_d)
 
+
 def grab_Wunderlist(preset_number):
     apps_pos_d = get_pos_dict()
 
@@ -45,8 +45,8 @@ def grab_Wunderlist(preset_number):
         "end tell"
     ]
     apple_script_cmd = generate_apple_script(commands)
-    # pdb.set_trace()
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     x_y = [int(dim) for dim in get_cmd_out.split(",")]
 
     # get size
@@ -58,6 +58,7 @@ def grab_Wunderlist(preset_number):
     ]
     apple_script_cmd = generate_apple_script(commands)
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     w_h = [int(dim) for dim in get_cmd_out.split(",")]
 
     # export data
@@ -74,8 +75,6 @@ def grab_Wunderlist(preset_number):
     write_pos_file(apps_pos_d)
 
 
-
-
 def grab_Discord(preset_number):
     apps_pos_d = get_pos_dict()
 
@@ -87,8 +86,8 @@ def grab_Discord(preset_number):
         "end tell"
     ]
     apple_script_cmd = generate_apple_script(commands)
-    # pdb.set_trace()
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     x_y = [int(dim) for dim in get_cmd_out.split(",")]
 
     # get size
@@ -100,6 +99,7 @@ def grab_Discord(preset_number):
     ]
     apple_script_cmd = generate_apple_script(commands)
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     w_h = [int(dim) for dim in get_cmd_out.split(",")]
 
     # export data
@@ -112,18 +112,11 @@ def grab_Discord(preset_number):
 
     key = "Discord_{}".format(preset_number)
     apps_pos_d[key] = wunderlist_data
-
     write_pos_file(apps_pos_d)
-
-
-
-
-
 
 
 def grab_Spotify(preset_number):
     apps_pos_d = get_pos_dict()
-    
 
     # Get position
     commands = [
@@ -136,8 +129,9 @@ def grab_Spotify(preset_number):
     ]
     apple_script_cmd = generate_apple_script(commands)
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     x_y = [int(dim) for dim in get_cmd_out.split(",")]
-    
+
     #  Get Size
     commands = [
         "tell application \"Spotify\" to activate",
@@ -149,6 +143,7 @@ def grab_Spotify(preset_number):
     ]
     apple_script_cmd = generate_apple_script(commands)
     get_cmd_out = shell(apple_script_cmd).output()[0]
+
     w_h = [int(dim) for dim in get_cmd_out.split(",")]
 
     # export data
@@ -169,7 +164,7 @@ def main(preset_number):
 
     #load config from file
     app_config_d = {}
-    load_dict_from_file(CONFIG_FILE, app_config_d)  
+    load_dict_from_file(CONFIG_FILE, app_config_d)
 
     running_apps = get_running_apps()
 
@@ -178,23 +173,13 @@ def main(preset_number):
 
         if app not in running_apps:
             continue
-
         if app_config_d[app]['isApple']:
             grab_apple(app, preset_number)
-        
         else:
             # get the local symbole table, get the function by its name, and call it. 
-            # pdb.set_trace()
             globals()['grab_' + app](preset_number)
-
-    
-
 
 
 if __name__ == "__main__":
     assert(len(sys.argv) == 2)
     main(sys.argv[1])
-
-
-
-         
