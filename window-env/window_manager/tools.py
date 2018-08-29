@@ -1,12 +1,19 @@
+import os
 from os import system
 from os import popen
 from os.path import isfile
 from shell import shell
 import json
 
+CONFIG_FILE = os.path.join(
+    os.path.dirname(__file__), 'window_config', 'app_config.json'
+)
 
-CONFIG_FILE = './app_config.json'
-POS_FILE = './apps_pos.json'
+POS_FILE = os.path.join(
+    os.path.dirname(__file__), 'window_config', 'apps_pos.json'
+)
+# CONFIG_FILE = './window_config/app_config.json'
+# POS_FILE = './window_config/apps_pos.json'
 
 
 def get_running_apps():
@@ -18,7 +25,7 @@ def get_running_apps():
 def get_pos_dict():
     apps_pos_d = {}
     try:
-        load_dict_from_file('apps_pos.json', apps_pos_d)
+        load_dict_from_file(POS_FILE, apps_pos_d)
     except json.JSONDecodeError:
         print("No settings")
     return apps_pos_d

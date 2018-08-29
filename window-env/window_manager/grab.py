@@ -16,8 +16,8 @@ def grab_apple(app, preset_number):
     # read  file
     apps_pos_d = get_pos_dict()
     commands = [
-        "tell application \"{}\"".format(app), 
-        "get bounds of the front window", 
+        "tell application \"{}\"".format(app),
+        "get bounds of the front window",
         "end tell"
     ]
 
@@ -176,7 +176,7 @@ def main(preset_number):
         if app_config_d[app]['isApple']:
             grab_apple(app, preset_number)
         else:
-            # get the local symbole table, get the function by its name, and call it. 
+            # get the local symbole table, get the function by its name, and call it.
             globals()['grab_' + app](preset_number)
 
 
