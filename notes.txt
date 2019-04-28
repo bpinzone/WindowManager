@@ -4,3 +4,13 @@ TODO:
     Put everything in virtual environment for portability. Put on pip.
     Make a function generator for the apple script interaction methods seen so far
     Add functionality to choose an app to bring fullscreen on retina display or center of big display
+
+How the virtual environment was created
+	pip3 install virtualenv
+	x=$(which python3) # grab path for existing default python environment on computer
+	virtualenv -p $x window-env # Make copy of environment, with self contained binaries.
+	chmod +x activate
+	# Edit the activate file so that line ~43 takes the path as the current working directory, not hard coded. Must activate when you're in window-env directory.
+	Activate the environment with source ./bin/activate
+	pip install shell
+	
